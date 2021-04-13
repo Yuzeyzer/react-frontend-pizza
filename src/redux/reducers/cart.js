@@ -53,6 +53,12 @@ const cart = (state = initialState, action) => {
         items: {},
       };
     }
+    case 'PLUS_CART_ITEM': {
+      return {
+        ...state,
+        items: {},
+      };
+    }
     default: {
       return state;
     }

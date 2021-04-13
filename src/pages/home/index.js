@@ -13,6 +13,8 @@ const Home = () => {
     setPizzas(response.data.pizzas);
   };
 
+  const countPizza = useSelector((state) => state.pizzas.items);
+
   const categoryItem = useSelector((state) => state.filters.category);
 
   React.useEffect(() => {
@@ -37,7 +39,13 @@ const Home = () => {
               }
             })
             .map((pizza) => {
-              return <PizzaBlock pizza={pizza} key={pizza.id} />;
+              return (
+                <PizzaBlock
+                  countPizza={countPizza[pizza.id] !== undefined ? countPizza[pizza.id].count : 0}
+                  pizza={pizza}
+                  key={pizza.id}
+                />
+              );
             })}
         </div>
       </div>

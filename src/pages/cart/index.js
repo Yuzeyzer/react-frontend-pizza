@@ -13,6 +13,8 @@ const Cart = () => {
     return items[key].items[0];
   });
 
+  console.log(items);
+
   const clearCart = () => {
     if (window.confirm('Вы уверены что хотите очистить корзину?')) {
       dispatch(clearCartAction());
@@ -23,7 +25,7 @@ const Cart = () => {
       <div className='container container--cart'>
         {pizzas.length > 0 ? (
           <div className='cart'>
-            <div className='cart__top'>
+            <div className={'cart__top'}>
               <h2 className='content__title'>
                 <svg
                   width='18'
@@ -97,7 +99,14 @@ const Cart = () => {
             </div>
             <div className='content__items'>
               {pizzas.map((pizza) => {
-                return <CartItem {...pizza} />;
+                console.log();
+                return (
+                  <CartItem
+                    {...pizza}
+                    totalCount={items[pizza.id].items.length}
+                    totalPrice={items[pizza.id].totalPrice}
+                  />
+                );
               })}
             </div>
             <div className='cart__bottom'>
