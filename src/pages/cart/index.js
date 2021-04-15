@@ -4,6 +4,7 @@ import CartItem from '../../components/cartItem';
 import CartEmpty from '../../components/cartEmpty';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearCartAction } from '../../redux/actions/cart';
+import { dropCount } from '../../redux/actions/pizzas';
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -14,11 +15,10 @@ const Cart = () => {
     return items[key].items[0];
   });
 
-  console.log(items);
-
   const clearCart = () => {
     if (window.confirm('Вы уверены что хотите очистить корзину?')) {
       dispatch(clearCartAction());
+      dispatch(dropCount());
     }
   };
   return (
@@ -100,7 +100,6 @@ const Cart = () => {
             </div>
             <div className='content__items'>
               {pizzas.map((pizza) => {
-                console.log();
                 return (
                   <CartItem
                     {...pizza}

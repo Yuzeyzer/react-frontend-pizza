@@ -1,35 +1,68 @@
 import React from 'react';
 import classNames from 'classnames';
 import { addCartAction } from '../../redux/actions/cart';
-import { pizzaCount } from '../../redux/actions/pizzas';
+import { pizzaCount, pizzaSizesAction, pizzaTypesAction } from '../../redux/actions/pizzas';
 import { useDispatch, useSelector } from 'react-redux';
 
 const PizzaBlock = ({ pizza, countPizza }) => {
   const dispatch = useDispatch();
-  const pizzaTypes = ['тонкое', 'традиционное'];
-  const pizzaSizes = [26, 30, 40];
-
   const { types, sizes } = pizza;
 
   const [activeType, setActiveType] = React.useState(types[0]);
   const [activeSize, setActiveSize] = React.useState(0);
+  const [pizzaItem, setPizzaItem] = React.useState({
+    id: pizza.id,
+    name: pizza.name,
+    imageUrl: pizza.imageUrl,
+    price: pizza.price[activeSize],
+    types,
+    sizes,
+    category: pizza.category,
+    rating: pizza.rating,
+  });
+
+  const pizzaTypes = ['тонкое', 'традиционное'];
+  const pizzaSizes = [26, 30, 40];
 
   const onSelectActiveType = (index) => {
     setActiveType(index);
+    dispatch(pizzaTypesAction({ type: index, id: pizza.id, count: countPizza }));
   };
 
   const onSelectActiveSize = (index) => {
+    setPizzaItem((prev) => ({ ...prev, price: pizza.price[index] }));
+    dispatch(
+      pizzaSizesAction({
+        id: pizza.id,
+        size: index,
+        count: countPizza,
+      }),
+    );
+    if (selectedSize[pizza.id] !== undefined) {
+      setActiveSize(selectedSize[pizza.id].size);
+    }
     setActiveSize(index);
   };
 
+  const selectedSize = useSelector((state) => state.pizzas.items);
+  const selectedType = useSelector((state) => state.pizzas.items);
+
+  React.useEffect(() => {
+    if (selectedSize[pizza.id] !== undefined) {
+      setPizzaItem((prev) => ({ ...prev, price: pizza.price[selectedSize[pizza.id].size] }));
+      setActiveSize(selectedSize[pizza.id].size);
+      setActiveType(types[selectedType[pizza.id].type ? selectedType[pizza.id].type : 0])
+    }
+  }, []);
+
   const addToCart = () => {
-    dispatch(pizzaCount(pizza.id));
-    dispatch(addCartAction(pizza));
+    dispatch(pizzaCount(pizzaItem.id));
+    dispatch(addCartAction(pizzaItem));
   };
   return (
     <div className='pizza-block'>
-      <img className='pizza-block__image' src={pizza.imageUrl} alt='Pizza' />
-      <h4 className='pizza-block__title'>{pizza.name}</h4>
+      <img className='pizza-block__image' src={pizzaItem.imageUrl} alt='Pizza' />
+      <h4 className='pizza-block__title'>{pizzaItem.name}</h4>
       <div className='pizza-block__selector'>
         <ul>
           {pizzaTypes.map((item, index) => {
@@ -63,7 +96,7 @@ const PizzaBlock = ({ pizza, countPizza }) => {
         </ul>
       </div>
       <div className='pizza-block__bottom'>
-        <div className='pizza-block__price'>от {pizza.price} ₽</div>
+        <div className='pizza-block__price'>от {pizzaItem.price} ₽</div>
         <div onClick={addToCart} className='button button--outline button--add'>
           <svg
             width='12'

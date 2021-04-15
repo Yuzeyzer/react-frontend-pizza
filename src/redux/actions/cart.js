@@ -6,3 +6,18 @@ export const addCartAction = (pizzaObject) => ({
 export const clearCartAction = () => ({
   type: 'CLEAR_CART',
 });
+
+export const plusCartAction = (id) => ({
+  type: 'PLUS_CART_ITEM',
+  payload: id,
+});
+
+export const minusCartAction = (id) => ({
+  type: 'MINUS_CART_ITEM',
+  payload: id,
+});
+
+export const removeCartAction = (id) => ({
+  type: 'REMOVE_CART_ITEM',
+  payload: id,
+});
