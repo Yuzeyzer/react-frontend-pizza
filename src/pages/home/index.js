@@ -9,7 +9,7 @@ const Home = () => {
   const [pizzas, setPizzas] = React.useState([]);
 
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3000/database.json');
+    const response = await axios.get('http://localhost:3001/database.json');
     setPizzas(response.data.pizzas);
   };
 

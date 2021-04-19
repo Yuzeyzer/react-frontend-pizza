@@ -3,7 +3,6 @@ import Header from './components/header';
 import Home from './pages/home';
 import Cart from './pages/cart';
 import './scss/app.scss';
-
 import { Route } from 'react-router-dom';
 
 function App() {
@@ -11,8 +10,8 @@ function App() {
     <div className='App'>
       <div className='wrapper'>
         <Header />
-        <Route exact path="/" component={Home}/>
-        <Route path="/cart" component={Cart}/>
+        <Route exact path='/' component={Home} />
+        <Route path='/cart' component={Cart} />
       </div>
     </div>
   );

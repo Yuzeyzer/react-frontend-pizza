@@ -1,17 +1,27 @@
-import React from 'react';
+import React,{useState,useRef, useEffect} from 'react';
 
 const Sort = () => {
   const sortItems = ['популярности', 'цене', 'алфавиту'];
 
-  const [activeSort, setActiveSort] = React.useState(0);
-  const [sortPopup, setSortPopup] = React.useState(false);
+  const [activeSort, setActiveSort] = useState(0);
+  const [sortPopup, setSortPopup] = useState(false);
+  const sortRef = useRef();
 
   const selectOnClick = (index) => {
     setSortPopup(false);
     setActiveSort(index);
   };
+
+  const handleClickOutSide = (event) => {
+    if (!event.path.includes(sortRef.current)) {
+      setSortPopup(false)
+    }
+  }
+  useEffect(()=> {
+    document.body.addEventListener("click", handleClickOutSide)
+  },[])
   return (
-    <div className='sort'>
+    <div ref={sortRef} className='sort'>
       <div className='sort__label'>
         <svg
           className={sortPopup ? 'active' : ''}
