@@ -13,4 +13,6 @@ const allReducers = combineReducers({
 
 const store = createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)));
 
+window.store = store;
+
 export default store;

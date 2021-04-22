@@ -2,24 +2,19 @@ import React from 'react';
 import Categories from '../../components/category';
 import Sort from '../../components/sort';
 import PizzaBlock from '../../components/pizzaBlock';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPizzasAction } from '../../redux/actions/pizzas';
 
 const Home = () => {
-  const [pizzas, setPizzas] = React.useState([]);
+  const dispatch = useDispatch();
 
-  const fetchData = async () => {
-    const response = await axios.get('http://localhost:3001/database.json');
-    setPizzas(response.data.pizzas);
-  };
+  const { items, pizzaItems } = useSelector((state) => state.pizzas);
 
-  const countPizza = useSelector((state) => state.pizzas.items);
-
-  const categoryItem = useSelector((state) => state.filters.category);
+  const { category, sort } = useSelector((state) => state.filters);
 
   React.useEffect(() => {
-    fetchData();
-  }, []);
+    dispatch(fetchPizzasAction(sort, category));
+  }, [sort, category]);
   return (
     <div className='content'>
       <div className='container'>
@@ -29,19 +24,11 @@ const Home = () => {
         </div>
         <h2 className='content__title'>Все пиццы</h2>
         <div className='content__items'>
-          {pizzas
-            .filter((pizza) => {
-              if (categoryItem == null) {
-                return pizza;
-              }
-              if (pizza.category === categoryItem) {
-                return pizza;
-              }
-            })
+          {pizzaItems
             .map((pizza) => {
               return (
                 <PizzaBlock
-                  countPizza={countPizza[pizza.id] !== undefined ? countPizza[pizza.id].count : 0}
+                  countPizza={items[pizza.id] !== undefined ? items[pizza.id].count : 0}
                   pizza={pizza}
                   key={pizza.id}
                 />

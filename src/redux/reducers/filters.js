@@ -1,5 +1,9 @@
 const initialState = {
   category: null,
+  sort: {
+    type: 'popular',
+    order: 'desc',
+  },
 };
 
 const filters = (state = initialState, action) => {
@@ -8,6 +12,12 @@ const filters = (state = initialState, action) => {
       return {
         ...state,
         category: action.payload,
+      };
+    }
+    case 'SET_SORT_BY': {
+      return {
+        ...state,
+        sort: action.payload,
       };
     }
     default: {

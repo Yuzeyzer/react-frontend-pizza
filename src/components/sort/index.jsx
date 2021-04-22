@@ -1,8 +1,15 @@
-import React,{useState,useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { setSort } from '../../redux/actions/filter';
+import { useDispatch } from 'react-redux';
 
 const Sort = () => {
-  const sortItems = ['популярности', 'цене', 'алфавиту'];
+  const dispatch = useDispatch();
 
+  const sortItems = [
+    { name: 'популярности', type: 'popular', order: 'desc' },
+    { name: 'цене', type: 'price', order: 'asc' },
+    { name: 'алфавиту', type: 'name', order: 'asc' },
+  ];
   const [activeSort, setActiveSort] = useState(0);
   const [sortPopup, setSortPopup] = useState(false);
   const sortRef = useRef();
@@ -10,16 +17,18 @@ const Sort = () => {
   const selectOnClick = (index) => {
     setSortPopup(false);
     setActiveSort(index);
+    dispatch(setSort(sortItems[index]));
   };
 
   const handleClickOutSide = (event) => {
     if (!event.path.includes(sortRef.current)) {
-      setSortPopup(false)
+      setSortPopup(false);
     }
-  }
-  useEffect(()=> {
-    document.body.addEventListener("click", handleClickOutSide)
-  },[])
+  };
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleClickOutSide);
+  }, []);
   return (
     <div ref={sortRef} className='sort'>
       <div className='sort__label'>
@@ -36,7 +45,7 @@ const Sort = () => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={() => setSortPopup(true)}>{sortItems[activeSort]}</span>
+        <span onClick={() => setSortPopup(true)}>{sortItems[activeSort].name}</span>
       </div>
       {sortPopup && (
         <div className='sort__popup'>
@@ -44,10 +53,10 @@ const Sort = () => {
             {sortItems.map((item, index) => {
               return (
                 <li
-                  key={item}
+                  key={item.name}
                   onClick={() => selectOnClick(index)}
                   className={index === activeSort ? 'active' : ''}>
-                  {item}
+                  {item.name}
                 </li>
               );
             })}

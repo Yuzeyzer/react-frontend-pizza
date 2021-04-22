@@ -1,9 +1,16 @@
 const initialState = {
   items: {},
+  pizzaItems: [],
 };
 
 const pizzas = (state = initialState, action) => {
   switch (action.type) {
+    case 'SET_PIZZAS': {
+      return {
+        ...state,
+        pizzaItems: action.payload,
+      };
+    }
     case 'INCREMENT_COUNT': {
       const savedCounter = !state.items[action.payload] ? 1 : state.items[action.payload].count + 1;
 

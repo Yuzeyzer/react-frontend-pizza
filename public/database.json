@@ -120,6 +120,26 @@
       "price": [375,475,660],
       "category": 0,
       "rating": 8
+    },
+    {
+      "id": 12,
+      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
+      "name": "Ананасовый",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [175,375,460],
+      "category": 0,
+      "rating": 8
+    },
+    {
+      "id": 13,
+      "imageUrl": "https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg",
+      "name": "Беконовый",
+      "types": [0, 1],
+      "sizes": [26, 30, 40],
+      "price": [385,475,660],
+      "category": 0,
+      "rating": 8
     }
   ]
 }
