@@ -289,6 +289,51 @@
       ],
       "category": 0,
       "rating": 8
+    },
+    {
+      "imageUrl": "https://dostavka-navat.kz/files/products/plov-uzgenskij.800x600w.jpg",
+      "name": "Бектур",
+      "types": "Жирное",
+      "sizes": "1300",
+      "price": "300",
+      "category": "2",
+      "rating": "2"
+    },
+    {
+      "imageUrl": "https://dostavka-navat.kz/files/products/plov-uzgenskij.800x600w.jpg",
+      "name": "Бектур",
+      "types": "Жирное",
+      "sizes": "1300",
+      "price": "300",
+      "category": "2",
+      "rating": "2"
+    },
+    {
+      "imageUrl": "https://dostavka-navat.kz/files/products/plov-uzgenskij.800x600w.jpg",
+      "name": "Мадумар",
+      "types": "Жирное",
+      "sizes": "1300",
+      "price": "300",
+      "category": "2",
+      "rating": "2"
+    },
+    {
+      "imageUrl": "https://aif-s3.aif.ru/images/020/410/1663400190c63b1e96cb76f7afa72973.jpg",
+      "name": "Гулина ",
+      "types": "Жирное",
+      "sizes": "50",
+      "price": "700",
+      "category": "100",
+      "rating": "100"
+    },
+    {
+      "imageUrl": "https://aif-s3.aif.ru/images/020/410/1663400190c63b1e96cb76f7afa72973.jpg",
+      "name": "Айзат",
+      "types": "Жирное",
+      "sizes": "50",
+      "price": "1000",
+      "category": "1",
+      "rating": "2"
     }
   ]
 }

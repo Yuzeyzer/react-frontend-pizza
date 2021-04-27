@@ -32,9 +32,18 @@ export const setPizzasAction = (pizzaArray) => ({
 export const fetchPizzasAction = (sort, category) => async (dispatch) => {
   console.log(category);
   const response = await axios.get(
-    `http://localhost:3000/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${
+    `http://localhost:8001/pizzas?${category !== null ? `category=${category}` : ''}&_sort=${
       sort.type
     }&_order=${sort.order}`,
   );
   await dispatch(setPizzasAction(response.data));
+};
+
+export const CreateNewPizza = async (pizza) => {
+  const response = await fetch(`http://localhost:8000/add-pizza`, {
+    method: 'POST',
+    body: JSON.stringify(pizza),
+    headers: { 'Content-Type': 'application/json' },
+  });
+  const json = await response.json();
 };
