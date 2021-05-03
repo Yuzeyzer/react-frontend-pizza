@@ -1,79 +1,28 @@
 import React from 'react';
-import { CreateNewPizza } from '../../redux/actions/pizzas';
-
+import { boxes } from './const';
+import './style.scss';
 const Admin = () => {
-  const [pizza, setPizza] = React.useState({
-    imageUrl: '',
-    name: '',
-    types: [],
-    sizes: [],
-    price: [],
-    category: 0,
-    rating: 0,
-  });
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    CreateNewPizza(pizza);
-  };
-
-  const handleOnChangeinput = (event) => {
-    setPizza((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-  };
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.name}
-          name='name'
-          type='text'
-          placeholder='Добавить имя пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.imageUrl}
-          name='imageUrl'
-          type='text'
-          placeholder='Добавить картинку пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.price}
-          name='price'
-          type='number'
-          placeholder='Добавить Цену пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.types}
-          name='types'
-          type='text'
-          placeholder='Добавить Тип пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.sizes}
-          name='sizes'
-          type='text'
-          placeholder='Добавить Размер пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.category}
-          name='category'
-          type='text'
-          placeholder='Добавить Категорию пиццы'
-        />
-        <input
-          onChange={handleOnChangeinput}
-          value={pizza.rating}
-          name='rating'
-          type='text'
-          placeholder='Добавить Рейтинг пиццы'
-        />
-        <button type='submit'>Отправить</button>
-      </form>
+    <div className='admin'>
+      <h3 className='admin__title'>Добавить новый продукт</h3>
+      <h5 className='admin__subtitle'>Выберите тип продукта</h5>
+      <div className='admin__content'>
+        {boxes.map((item) => {
+          return (
+            <div className='admin__box'>
+              {item.svg()}
+              <h5 className="box__title">{item.title}</h5>
+            </div>
+          );
+        })}
+      </div>
+      <div className='admin_bottom'>
+        <p className='admin__description'>
+          В данном блоке вы определяете тип добавляемого продукта, в следующем блоке вы будете
+          выбирать его параметры*
+        </p>
+        <button className='admin__button'>Далее</button>
+      </div>
     </div>
   );
 };

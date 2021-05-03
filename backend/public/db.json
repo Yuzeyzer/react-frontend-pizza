@@ -334,6 +334,77 @@
       "price": "1000",
       "category": "1",
       "rating": "2"
+    },
+    {
+      "imageUrl": "https://tv.ua/i/89/44/17/894417/aea5fb68552ed83db8c7b1a1bae6d504-quality_70Xresize_crop_1Xallow_enlarge_0Xw_750Xh_463.jpg",
+      "name": "Керим",
+      "types": "Жирное",
+      "sizes": "28",
+      "price": "200",
+      "category": "1",
+      "rating": "1"
+    },
+    {
+      "imageUrl": "https://i.pinimg.com/736x/ee/43/f1/ee43f1c0a8659ffe21c4ec27339979b4.jpg",
+      "name": "Аэлина",
+      "types": "Жирное",
+      "sizes": "100",
+      "price": "700",
+      "category": "2",
+      "rating": "3"
+    },
+    {
+      "imageUrl": "https://tv.ua/i/89/44/17/894417/aea5fb68552ed83db8c7b1a1bae6d504-quality_70Xresize_crop_1Xallow_enlarge_0Xw_750Xh_463.jpg",
+      "name": "Улук",
+      "types": "3",
+      "sizes": "4",
+      "price": "2",
+      "category": "5",
+      "rating": "6"
+    },
+    {
+      "imageUrl": "https://edaplus.info/food_pictures/onion.jpg",
+      "name": "Мадумар",
+      "types": [
+        1
+      ],
+      "sizes": [
+        40,
+        30
+      ],
+      "price": 700,
+      "category": 0,
+      "rating": 0
+    },
+    {
+      "imageUrl": "https://web-zoopark.ru/wp-content/uploads/2018/07/7-9.jpg",
+      "name": "Айза",
+      "types": [
+        0,
+        1
+      ],
+      "sizes": [
+        23,
+        30
+      ],
+      "price": 1000,
+      "category": 0,
+      "rating": 0
+    },
+    {
+      "imageUrl": "https://www.meme-arsenal.com/memes/d0b7380c554b78d0420eacfc37424cd5.jpg",
+      "name": "Руслан",
+      "types": [
+        1
+      ],
+      "sizes": [
+        40,
+        30,
+        23
+      ],
+      "price": 1424,
+      "category": 0,
+      "rating": 0
     }
   ]
 }

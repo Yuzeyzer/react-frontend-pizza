@@ -40,7 +40,7 @@ export const fetchPizzasAction = (sort, category) => async (dispatch) => {
 };
 
 export const CreateNewPizza = async (pizza) => {
-  const response = await fetch(`http://localhost:8000/add-pizza`, {
+  const response = await fetch(`http://localhost:5000/add-pizza`, {
     method: 'POST',
     body: JSON.stringify(pizza),
     headers: { 'Content-Type': 'application/json' },
