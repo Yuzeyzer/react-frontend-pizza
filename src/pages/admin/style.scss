@@ -43,6 +43,9 @@
 		}
 		&.is-active {
 			background-color: #fe5f1e;
+			.box__title {
+				opacity: 1;
+			}
 			path {
 				fill: white;
 			}

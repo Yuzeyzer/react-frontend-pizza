@@ -16,6 +16,7 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/',
   },
   {
     title: 'Пиццы',
@@ -62,6 +63,7 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/pizzas',
   },
   {
     title: 'Десерты',
@@ -96,6 +98,7 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/deserts',
   },
   {
     title: 'Комбо',
@@ -194,6 +197,7 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/combo',
   },
   {
     title: 'Напитки',
@@ -232,6 +236,7 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/drinks',
   },
   {
     title: 'Админ',
@@ -250,5 +255,6 @@ export const sidebarItems = [
         </svg>
       );
     },
+    link: '/admin',
   },
 ];

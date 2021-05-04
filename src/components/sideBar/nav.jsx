@@ -1,17 +1,20 @@
 import React from 'react';
 import { sidebarItems } from './const';
+import { Link } from 'react-router-dom';
+
 const Nav = () => {
   const [active, setActive] = React.useState(0);
   return (
     <ul>
       {sidebarItems.map((item, index) => {
         return (
-          <li
+          <Link
+            to={item.link}
             onClick={() => setActive(index)}
             className={`aside__box ${active === index ? 'is-active' : ''}`}>
-            <a href=''>{item.title}</a>
+            <span>{item.title}</span>
             {item.svg()}
-          </li>
+          </Link>
         );
       })}
     </ul>

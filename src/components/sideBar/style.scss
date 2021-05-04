@@ -41,20 +41,20 @@
         }
         &:last-child {
             background-color: #fe5f1e;
-            a {
+            span {
                 color: white;
             }
         }
         &:hover {
             background: #2c2c2c;
-            a {
+            span {
                 color: white;
             }
             path {
                 fill: white;
             }
         }
-        a {
+        span {
             font-family: Raleway;
             font-style: normal;
             font-weight: 600;
@@ -70,7 +70,7 @@
     }
     &__box.is-active {
         background: #2c2c2c;
-        a {
+        span {
             color: white;
         }
         path {
