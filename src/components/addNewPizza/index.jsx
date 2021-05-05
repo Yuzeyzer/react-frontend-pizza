@@ -1,73 +1,61 @@
 import React from 'react';
-import FormikExample from './formik';
+import Sizes from './sizes';
+import { Formik, Field, Form } from 'formik';
 import './style.scss';
+import Types from './types';
+import Prices from './prices';
 
 const AddNewPizza = () => {
-  const [values, setValues] = React.useState({
-    id: 0,
-    name: '',
-    imageUrl: '',
-    sizes: [],
-    types: [],
-    price: [],
-  });
+  const [pizza, setPizza] = React.useState({});
 
   return (
     <div className='add-pizza'>
       <h3 className='add-pizza__title'>Добавление новой пиццы</h3>
       <h5 className='add-pizza__subtitle'>Выберите параметры</h5>
-      <form className='form'>
-        <div className='form__row'>
-          <label className='form-item' htmlFor=''>
-            <span className='form-item__legend'>Название</span>
-            <input className='form-item__input' type='text' />
-          </label>
-          <label className='form-item' htmlFor=''>
-            <span className='form-item__legend'>Путь к картинке</span>
-            <input className='form-item__input' type='text' />
-          </label>
-        </div>
-        <div className='form__row'>
-          <div className='form-item sizes'>
-            <h6 className='form-item__legend'>Размеры</h6>
-            <FormikExample />
-          </div>
-          <div className='form-item types'>
-            <h6>Типы</h6>
-            <label htmlFor=''>
-              <input type='checkbox' />
-              <span>Традиционное</span>
-            </label>
-            <label htmlFor=''>
-              <input type='checkbox' />
-              <span>Тонкое</span>
-            </label>
-          </div>
-        </div>
-        <div>
-          <div className='prices'>
-            <label htmlFor=''>
-              <span>26 см</span>
-              <input type='text' placeholder='345' />
-              <span>сом</span>
-            </label>
-            <label htmlFor=''>
-              <span>30 см</span>
-              <input type='text' placeholder='455' />
-              <span>сом</span>
-            </label>
-            <label htmlFor=''>
-              <span>40 см</span>
-              <input type='text' placeholder='620' />
-              <span>сом</span>
-            </label>
-          </div>
-        </div>
-        <div className='add-pizza__bottom'>
-          <p className='add-pizza__info'>Не забудьте указать цену для разных резмеров пиццы*</p>
-          <button>Далее</button>
-        </div>
-      </form>
+      <Formik
+        initialValues={{
+          name: '',
+          imageUrl: '',
+          sizes: [],
+          types: [],
+          price: [],
+        }}
+        onSubmit={(values) => {
+          const sizes = values.sizes.map((item) => +item);
+          const price = values.price.map((item) => +item);
+          const types = values.types.map((item) => +item);
+
+          setPizza((prev) => ({ ...prev, ...values, sizes, price, types }));
+
+          console.log(pizza);
+        }}>
+        {({ values }) => (
+          <Form>
+            <div className='form__row'>
+              <label className='form-item'>
+                <span className='form-item__legend'>Название</span>
+                <Field className='form-item__input' name='name' type='text' />
+              </label>
+              <label className='form-item'>
+                <span className='form-item__legend'>Путь к картинке</span>
+                <Field className='form-item__input' name='imageUrl' type='text' />
+              </label>
+            </div>
+            <div className='form__row'>
+              <Sizes values={values} />
+              <Types />
+            </div>
+            <div className='form__row'>
+              <Prices />
+            </div>
+            <div className='add-pizza__bottom'>
+              <p className='add-pizza__info'>Не забудьте указать цену для разных резмеров пиццы*</p>
+              <button>Далее</button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+      <div className='form'></div>
     </div>
   );
 };
